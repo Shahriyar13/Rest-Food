@@ -1,14 +1,13 @@
 package com.example.template.di
 
 import androidx.viewbinding.BuildConfig
-import com.example.template.data.remote.api.SampleApi
+import com.example.template.data.remote.api.FoodsAndCitiesApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -69,12 +68,12 @@ class NetworkModule {
     fun provideRetrofit(client: OkHttpClient, gson: Gson): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(client)
-        .baseUrl("https://google.com/")
+        .baseUrl("https://api.npoint.io/")
         .build()
 
     @Provides
     @Singleton
-    fun provideSampleApi(retrofit: Retrofit): SampleApi =
-        retrofit.create(SampleApi::class.java)
+    fun provideFoodsAndCitiesApi(retrofit: Retrofit): FoodsAndCitiesApi =
+        retrofit.create(FoodsAndCitiesApi::class.java)
 
 }

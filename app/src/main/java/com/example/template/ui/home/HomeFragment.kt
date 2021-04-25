@@ -16,7 +16,9 @@ class HomeFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    private val viewModel: HomeViewModel by viewModels ()
+    private lateinit var adapter: FoodAndCityAdapter
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +31,15 @@ class HomeFragment : BaseFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
+        adapter = FoodAndCityAdapter(
+            CityListener { cityId -> viewModel.onCityClicked(cityId) },
+            FoodListener { foodId -> viewModel.onFoodClicked(foodId) }
+        )
+
+        binding.recyclerViewFoodAndCity.adapter = adapter
+
+        binding.swipeRefresh.isRefreshing = true
+
         return binding.root
 
     }
@@ -36,12 +47,28 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.navigateToFeatureA.observe(viewLifecycleOwner) {
-            val sampleText = "Hello World!"
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.refreshRequested()
+        }
+
+        viewModel.navigateToCityDetails.observe(viewLifecycleOwner) {
             val direction = HomeFragmentDirections.actionFragmentHomeToFragmentFeatureA(
-                sampleText
+                it!!
             )
             findNavController().safeNavigate(direction)
         }
+
+        viewModel.navigateToFoodDetails.observe(viewLifecycleOwner) {
+            val direction = HomeFragmentDirections.actionFragmentHomeToFragmentFeatureA(
+                it!!
+            )
+            findNavController().safeNavigate(direction)
+        }
+
+        viewModel.list.observe(viewLifecycleOwner) {
+            binding.swipeRefresh.isRefreshing = false
+            adapter.addHeaderAndSubmitList(it.cities, it.foods)
+        }
+
     }
 }

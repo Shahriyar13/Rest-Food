@@ -30,6 +30,7 @@ object Versions {
     const val appcompatVersion = "1.2.0"
     const val constraintLayoutVersion = "2.0.4"
     const val materialVersion = "1.3.0"
+    const val swipeRefreshVersion = "1.1.0"
     const val lifeCycleVersion = "2.3.1"
     const val navigationVersion = "2.3.5"
     const val navigationComposeVersion = "1.0.0-alpha10"
@@ -82,6 +83,7 @@ object AppDependencies {
     private const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtxVersion}"
     private const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
     private const val material = "com.google.android.material:material:${Versions.materialVersion}"
+    private const val swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshVersion}"
 
     // dependency injection libraries
     private const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
@@ -136,6 +138,7 @@ object AppDependencies {
         add(appcompat)
         add(constraintLayout)
         add(material)
+        add(swipeRefresh)
         add(lifecycleLiveData)
         add(lifecycleViewModel)
 //        add(lifecycleViewExtensions)

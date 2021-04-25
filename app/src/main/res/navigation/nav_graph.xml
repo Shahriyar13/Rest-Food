@@ -13,21 +13,21 @@
             android:id="@+id/action_fragmentHome_to_fragmentFeatureA"
             app:destination="@id/fragmentFeatureA">
             <argument
-                android:name="sampleText"
-                android:defaultValue=""
-                app:argType="string" />
+                android:name="id"
+                android:defaultValue="0L"
+                app:argType="long" />
         </action>
     </fragment>
 
     <fragment
         android:id="@+id/fragmentFeatureA"
-        android:name="com.example.template.ui.feature_a.SampleFragment"
+        android:name="com.example.template.ui.city.SampleFragment"
         tools:layout="@layout/fragment_feature_a">
 
         <argument
-            android:name="sampleText"
-            android:defaultValue=""
-            app:argType="string" />
+            android:name="id"
+            android:defaultValue="0L"
+            app:argType="long" />
 
     </fragment>
 

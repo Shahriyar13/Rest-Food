@@ -1,12 +1,17 @@
 package com.example.template.di
 
-import com.example.template.data.usecase.feature_a.SampleUseCaseImpl
-import com.example.template.domain.repository.feature_a.SampleRepository
-import com.example.template.domain.usecase.feature_a.SampleUseCase
+import com.example.template.data.usecase.cities.CitiesUseCaseImpl
+import com.example.template.data.usecase.fetchdata.UpdateListUseCaseImpl
+import com.example.template.data.usecase.foods.FoodsUseCaseImpl
+import com.example.template.domain.repository.cities.CitiesRepository
+import com.example.template.domain.repository.feature_a.UpdateListRepository
+import com.example.template.domain.repository.foods.FoodsRepository
+import com.example.template.domain.usecase.cities.CitiesUseCase
+import com.example.template.domain.usecase.fetchdata.UpdateListUseCase
+import com.example.template.domain.usecase.foods.FoodsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,8 +21,20 @@ class UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideSampleUseCase(
-        sampleRepository: SampleRepository
-    ): SampleUseCase = SampleUseCaseImpl(sampleRepository)
+    fun provideUpdateListUseCase(
+        updateListRepository: UpdateListRepository
+    ): UpdateListUseCase = UpdateListUseCaseImpl(updateListRepository)
+
+    @Provides
+    @Singleton
+    fun provideCitiesUseCase(
+        citiesRepository: CitiesRepository
+    ): CitiesUseCase = CitiesUseCaseImpl(citiesRepository)
+
+    @Provides
+    @Singleton
+    fun provideFoodsUseCase(
+        foodsRepository: FoodsRepository
+    ): FoodsUseCase = FoodsUseCaseImpl(foodsRepository)
 
 }

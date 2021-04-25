@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.template.ui.feature_a.SampleViewModel" />
+            type="com.example.template.ui.city.SampleViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,14 +13,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
 
-        <EditText
-            android:id="@+id/editTextSampleTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@={viewModel.sampleValue}"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

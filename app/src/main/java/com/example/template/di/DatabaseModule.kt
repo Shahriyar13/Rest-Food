@@ -2,10 +2,9 @@ package com.example.template.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.template.data.locale.MDatabase
-import com.example.template.data.locale.dao.SampleDao
+import com.example.template.data.locale.dao.CityDao
+import com.example.template.data.locale.dao.FoodDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,21 +19,25 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideMDatabase(@ApplicationContext context: Context): MDatabase {
-        val migrationV1ToV2 = object : Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE SampleTable ADD COLUMN name TEXT DEFAULT '' NOT NULL")
-            }
-        }
+//        val migrationV1ToV2 = object : Migration(1, 2) {
+//            override fun migrate(database: SupportSQLiteDatabase) {
+//                database.execSQL("ALTER TABLE SampleTable ADD COLUMN name TEXT DEFAULT '' NOT NULL")
+//            }
+//        }
 
         return Room.databaseBuilder(context, MDatabase::class.java, "mDB")
-            .addMigrations(
-                migrationV1ToV2
-            )
+//            .addMigrations(
+//                migrationV1ToV2
+//            )
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideSampleDao(mDatabase: MDatabase): SampleDao = mDatabase.sampleDao()
+    fun provideCityDao(mDatabase: MDatabase): CityDao = mDatabase.cityDao()
+
+    @Singleton
+    @Provides
+    fun provideFoodDao(mDatabase: MDatabase): FoodDao = mDatabase.foodDao()
 
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:text="@string/main_cities_in_japan"
+    android:textColor="@color/textPrimary"
+    android:textSize="@dimen/text_size_title" />

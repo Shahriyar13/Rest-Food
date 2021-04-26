@@ -16,6 +16,10 @@ class CitiesLocalDataSourceImpl(
         cityDao.truncate()
     }
 
+    override suspend fun getCity(id: Long): CityEntity? {
+        return cityDao.selectById(id)?.map()
+    }
+
     override suspend fun getCities(): List<CityEntity> {
         return cityDao.select()?.map { it.map() }?.toList() ?: listOf()
     }

@@ -9,4 +9,5 @@ class CitiesUseCaseImpl(
 ): CitiesUseCase {
 
     override suspend fun getCities(): List<CityEntity> = citiesRepository.getCities()
+    override suspend fun getCity(id: Long): CityEntity? = citiesRepository.getCity(id)
 }

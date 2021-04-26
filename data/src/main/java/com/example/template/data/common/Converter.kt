@@ -9,8 +9,8 @@ import retrofit2.Response
 object Converter {
 
     /** use this if server response data not modified (use whole body as data) **/
-    fun <T> createFromResponse(response: Response<T>): MResult<T> {
-        return if (response.isSuccessful) {
+    fun <T> createFromResponse(response: Response<T>?): MResult<T> {
+        return if (response?.isSuccessful == true) {
             val body = response.body()
             when {
                 body != null -> {
@@ -25,7 +25,7 @@ object Converter {
             }
         } else {
             return try {
-                val reader = JSONObject((response.errorBody() as ResponseBody).string())
+                val reader = JSONObject((response?.errorBody() as ResponseBody).string())
                 val errorMessage = reader.getJSONArray("Messages")[0]?.toString()
                 MResult.Error(errorMessage ?: "Error")
             } catch (e: JSONException) {

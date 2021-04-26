@@ -26,36 +26,16 @@
       </configuration>
     </facet>
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="3" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
-        <compilerSettings>
-          <option name="additionalArguments" value="-Xallow-no-source-files" />
-        </compilerSettings>
+      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false">
+        <compilerSettings />
         <compilerArguments>
-          <option name="destination" value="$MODULE_DIR$/../../../data/build/tmp/kotlin-classes/debug" />
-          <option name="classpath" value="$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe8242da0a745f15635a08e99ff9c082/jetified-core-ktx-1.3.2-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/f13edc5ee9765afde8485e479595514d/jetified-room-ktx-2.3.0-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/cfaac9f42e1d5aa188a98513b16a9aef/jetified-kotlinx-coroutines-android-1.4.1.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/1718b9e96f5fc5f0769742180780f740/jetified-kotlinx-coroutines-core-jvm-1.4.1.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/25cda95ce87e6759ea7e47115a2e4ebe/jetified-kotlin-stdlib-1.4.32.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/5a02ae2d1e5ee3a411f131853ee9756c/jetified-kotlin-stdlib-common-1.4.32.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/27faf0b3a7ff618be89a2f3e0c4db714/jetified-annotations-13.0.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/df63448baafd5451332e8932393ca170/core-1.3.2-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/0192780db5607956e7fc0942f4dd4ac6/room-runtime-2.3.0-api.jar:/Users/shahriyar/.gradle/caches/modules-2/files-2.1/androidx.room/room-common/2.3.0/11e5b5194cb53b2c5ebfa57710a1a74c67cb3335/room-common-2.3.0.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/1b41d0b5376cb88d11cafce29edfd672/sqlite-framework-2.1.0-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/056ccf2a8c59b8dcf27b87e79b3a7be4/sqlite-2.1.0-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/391d4ba0dea1ea27e456ee20c14d805c/lifecycle-runtime-2.0.0-api.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/9127334f701924d3df3b95b9b742dbc7/versionedparcelable-1.1.0-api.jar:/Users/shahriyar/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.0.0/e070ffae07452331bc5684734fce6831d531785c/lifecycle-common-2.0.0.jar:/Users/shahriyar/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.0.1/3e8d84e4fe526be0ca1832a518bf323e729a79fd/core-common-2.0.1.jar:/Users/shahriyar/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.0.0/42858b26cafdaa69b6149f45dfc2894007bc2c7a/collection-1.0.0.jar:/Users/shahriyar/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/e5ed1fa8ce715803d39f8e92875ae67d/jetified-converter-gson-2.6.2.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/95e56d3d45872cac3bcc5456badf58dd/jetified-retrofit-2.6.2.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/6a743c4ae16977aeef5ec955bf02e43c/jetified-okhttp-3.12.0.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/3f6bde4e61659a8e45cf3f627855eb64/jetified-okio-1.15.0.jar:/Users/shahriyar/.gradle/caches/transforms-2/files-2.1/07273e185f4cfe6f418a9dfda70cc04d/jetified-gson-2.8.5.jar:/Users/shahriyar/Library/Android/sdk/platforms/android-30/android.jar:/Users/shahriyar/Library/Android/sdk/build-tools/30.0.3/core-lambda-stubs.jar" />
-          <option name="noStdlib" value="true" />
-          <option name="noReflect" value="true" />
-          <option name="moduleName" value="data_debug" />
-          <option name="jvmTarget" value="1.8" />
           <option name="languageVersion" value="1.4" />
           <option name="apiVersion" value="1.4" />
           <option name="pluginOptions">
             <array />
           </option>
           <option name="pluginClasspaths">
-            <array>
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.intellij.deps/trove4j/1.0.20181211/216c2e14b070f334479d800987affe4054cd563f/trove4j-1.0.20181211.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.4.32/b4fc9be460ca88eecea2303e142ce2920bd14775/kotlin-compiler-embeddable-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/1.4.32/b40c5de5adea26ebb4e5fc36945c482ac20acee2/kotlin-daemon-embeddable-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.4.32/ce852b166d97f0f1991b5130c2bb02e2ef6c554e/kotlin-reflect-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.4.32/bac50b0748be017dbc13fc1cb7231b1c9da0e106/kotlin-script-runtime-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.4.32/ef50bfa2c0491a11dcc35d9822edbfd6170e1ea2/kotlin-stdlib-common-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.4.32/461367948840adbb0839c51d91ed74ef4a9ccb52/kotlin-stdlib-1.4.32.jar" />
-              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
-            </array>
-          </option>
-          <option name="errors">
-            <ArgumentParseErrors />
+            <array />
           </option>
         </compilerArguments>
       </configuration>

@@ -10,15 +10,19 @@ class FoodsAndCitiesRemoteDataSourceImpl(
 ): FoodsAndCitiesRemoteDataSource {
 
     override suspend fun getFoodsAndCities(): MResult<FoodsAndCitiesResDTO> {
-        val res = foodsAndCitiesApi.getSamples()
-        return when (val result =
-            Converter.createFromResponse(res)) {
-            is MResult.Success -> {
-                MResult.Success(result.data)
+        return try {
+            val res = foodsAndCitiesApi.getSamples()
+            return when (val result =
+                Converter.createFromResponse(res)) {
+                is MResult.Success -> {
+                    MResult.Success(result.data)
+                }
+                is MResult.SuccessEmpty -> MResult.SuccessEmpty()
+                is MResult.Error -> MResult.Error(result.errorMessage)
+                else -> MResult.Error("Unknown")
             }
-            is MResult.SuccessEmpty -> MResult.SuccessEmpty()
-            is MResult.Error -> MResult.Error(result.errorMessage)
-            else -> MResult.Error("Unknown")
+        } catch (e: Exception) {
+            MResult.Error(e.message ?: "Connection Error")
         }
     }
 

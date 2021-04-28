@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.example.template.base.BaseFragment
+import com.example.template.common.extensions.attachToolbarToNavigation
 import com.example.template.common.extensions.load
 import com.example.template.databinding.FragmentCityDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,6 @@ class CityDetailsFragment: BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
     override fun onCreateView(
@@ -35,6 +35,10 @@ class CityDetailsFragment: BaseFragment() {
             viewModel = this.viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+
+        attachToolbarToNavigation(binding.toolbarLayout.toolbar)
+
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
 
         return binding.root
 
@@ -50,6 +54,8 @@ class CityDetailsFragment: BaseFragment() {
             binding.imageViewCity.load(it.imageUrl)
             binding.textViewTitle.text = it.name
             binding.textViewDescription.text = it.description
+
+            binding.toolbarLayout.toolbar.title = it.name
         }
 
         viewModel.setCityId(args.id)

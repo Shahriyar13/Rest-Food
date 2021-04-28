@@ -11,8 +11,8 @@ class FoodsAndCitiesRemoteDataSourceImpl(
 
     override suspend fun getFoodsAndCities(): MResult<FoodsAndCitiesResDTO> {
         return try {
-            val res = foodsAndCitiesApi.getSamples()
-            return when (val result =
+            val res = foodsAndCitiesApi.getFullData()
+            when (val result =
                 Converter.createFromResponse(res)) {
                 is MResult.Success -> {
                     MResult.Success(result.data)

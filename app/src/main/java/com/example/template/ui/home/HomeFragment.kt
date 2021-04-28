@@ -52,17 +52,14 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.navigateToCityDetails.observe(viewLifecycleOwner) {
-            val direction = HomeFragmentDirections.actionFragmentHomeToFragmentFeatureA(
+            val direction = HomeFragmentDirections.actionFragmentHomeToFragmentCityDetails(
                 it!!
             )
             findNavController().safeNavigate(direction)
         }
 
         viewModel.navigateToFoodDetails.observe(viewLifecycleOwner) {
-            val direction = HomeFragmentDirections.actionFragmentHomeToFragmentFeatureA(
-                it!!
-            )
-            findNavController().safeNavigate(direction)
+
         }
 
         viewModel.list.observe(viewLifecycleOwner) {

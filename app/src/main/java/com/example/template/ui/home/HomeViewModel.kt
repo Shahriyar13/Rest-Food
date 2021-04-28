@@ -36,6 +36,18 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
+            val cities = citiesUseCase.getCities()
+            val foods = foodsUseCase.getFoods()
+            if (foods.isNullOrEmpty().not() || cities.isNullOrEmpty().not()) {
+                _list.postValue(CitiesAndFoods(cities, foods))
+            } else {
+                checkForNewData()
+            }
+        }
+    }
+
+    private fun checkForNewData() {
+        viewModelScope.launch(Dispatchers.IO) {
             when (val res = updateListUseCase.updateCitiesAndFoods()) {
                 is MResult.Success -> {
                     val cities = citiesUseCase.getCities()
@@ -61,11 +73,11 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onFoodClicked(foodId: Long) {
-        navigateToFoodDetails.postValue(foodId)
+//        navigateToFoodDetails.postValue(foodId)
     }
 
     fun refreshRequested() {
-        fetchData()
+        checkForNewData()
     }
 }
 

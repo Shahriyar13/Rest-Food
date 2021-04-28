@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -66,7 +69,7 @@ class FoodAndCityAdapter(
             ITEM_VIEW_TYPE_FOOD_HEADER -> FoodHeaderViewHolder.from(parent)
             ITEM_VIEW_TYPE_CITY -> CityViewHolder.from(parent)
             ITEM_VIEW_TYPE_FOOD -> FoodViewHolder.from(parent)
-            else -> throw ClassCastException("Unknown viewType ${viewType}")
+            else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
 
@@ -99,14 +102,29 @@ class FoodAndCityAdapter(
         }
     }
 
-    class CityViewHolder private constructor(val binding: ItemListCityBinding) :
+    class CityViewHolder private constructor(private val binding: ItemListCityBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CityEntity, clickListener: CityListener) {
-            binding.city = item
-            binding.image.load(item.imageUrl)
-            binding.clickListener = clickListener
-            binding.executePendingBindings()
+
+            ViewCompat.setTransitionName(binding.imageView, "image_${item.id}")
+            ViewCompat.setTransitionName(binding.textViewTitle, "title_${item.id}")
+            ViewCompat.setTransitionName(binding.textViewDescription, "description_${item.id}")
+
+            with(binding) {
+                city = item
+                executePendingBindings()
+                imageView.load(item.imageUrl)
+            }
+
+            binding.cardView.setOnClickListener {
+                 val extras = FragmentNavigatorExtras(
+                        binding.imageView to "image_${item.id}",
+                        binding.textViewTitle to "title_${item.id}",
+                        binding.textViewDescription to "description_${item.id}")
+
+                clickListener.onClick(item, extras)
+            }
         }
 
         companion object {
@@ -118,7 +136,7 @@ class FoodAndCityAdapter(
         }
     }
 
-    class FoodViewHolder private constructor(val binding: ItemListFoodBinding) :
+    class FoodViewHolder private constructor(private val binding: ItemListFoodBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: FoodEntity, clickListener: FoodListener) {
@@ -149,8 +167,8 @@ class DiffCallback : DiffUtil.ItemCallback<DataItem>() {
     }
 }
 
-class CityListener(val clickListener: (cityId: Long) -> Unit) {
-    fun onClick(city: CityEntity) = clickListener(city.id!!)
+class CityListener(val clickListener: (cityId: Long, extras: FragmentNavigator.Extras) -> Unit) {
+    fun onClick(city: CityEntity, extras: FragmentNavigator.Extras) = clickListener(city.id!!, extras)
 }
 
 class FoodListener(val clickListener: (foodId: Long) -> Unit) {

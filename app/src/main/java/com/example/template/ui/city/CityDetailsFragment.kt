@@ -38,11 +38,11 @@ class CityDetailsFragment: BaseFragment() {
 
         viewModel.city.observe(viewLifecycleOwner) {
             binding.imageViewCity.load(it.imageUrl)
+            binding.textViewTitle.text = it.name
+            binding.textViewDescription.text = it.description
         }
 
         viewModel.setCityId(args.id)
-//        viewModel.sampleValue.value = args.sampleText
-//        binding.editTextSampleTitle.setText(args.sampleText)
 
     }
 }

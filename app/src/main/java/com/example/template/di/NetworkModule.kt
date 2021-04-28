@@ -48,6 +48,8 @@ class NetworkModule {
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }
+            .callTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
             .build()
     } else OkHttpClient
         .Builder()

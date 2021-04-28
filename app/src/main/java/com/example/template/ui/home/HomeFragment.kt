@@ -8,7 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import com.example.template.base.BaseFragment
+import com.example.template.common.extensions.attachToolbarToNavigation
 import com.example.template.common.extensions.safeNavigate
 import com.example.template.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +24,11 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,6 +41,8 @@ class HomeFragment : BaseFragment() {
         }
 
         binding.swipeRefresh.isRefreshing = true
+
+        attachToolbarToNavigation(binding.toolbarLayout.toolbar)
 
         return binding.root
 

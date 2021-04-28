@@ -8,14 +8,19 @@ import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavArgs
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.template.R
 import com.example.template.common.navigation.NavigationResult
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import kotlin.properties.Delegates
 
@@ -79,6 +84,13 @@ fun NavController.safeNavigate(direction: NavDirections, extra: FragmentNavigato
         e.printStackTrace()
     }
 }
+
+fun Fragment.attachToolbarToNavigation(toolbar: Toolbar) {
+    val navController = findNavController()
+    val appBarConfiguration = AppBarConfiguration(navController.graph)
+    toolbar.setupWithNavController(navController, appBarConfiguration)
+}
+
 
 fun View.showErrorMessage(message: String) {
     val snack: Snackbar =

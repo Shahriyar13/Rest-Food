@@ -24,9 +24,6 @@ class HomeViewModel @Inject constructor(
     private val foodsUseCase: FoodsUseCase,
 ) : BaseViewModel() {
 
-    val navigateToCityDetails = SingleLiveEvent<Long>()
-    val navigateToFoodDetails = SingleLiveEvent<Long>()
-
     private val _list = MutableLiveData<CitiesAndFoods>()
     val list: LiveData<CitiesAndFoods> = _list
 
@@ -35,6 +32,18 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val cities = citiesUseCase.getCities()
+            val foods = foodsUseCase.getFoods()
+            if (foods.isNullOrEmpty().not() || cities.isNullOrEmpty().not()) {
+                _list.postValue(CitiesAndFoods(cities, foods))
+            } else {
+                checkForNewData()
+            }
+        }
+    }
+
+    private fun checkForNewData() {
         viewModelScope.launch(Dispatchers.IO) {
             when (val res = updateListUseCase.updateCitiesAndFoods()) {
                 is MResult.Success -> {
@@ -56,16 +65,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun onCityClicked(cityId: Long) {
-        navigateToCityDetails.postValue(cityId)
-    }
-
-    fun onFoodClicked(foodId: Long) {
-        navigateToFoodDetails.postValue(foodId)
-    }
-
     fun refreshRequested() {
-        fetchData()
+        checkForNewData()
     }
 }
 

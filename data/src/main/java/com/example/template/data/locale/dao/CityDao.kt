@@ -13,8 +13,8 @@ interface CityDao: BaseDao<CityData> {
     @Query("SELECT * FROM CityTable WHERE name Like :name")
     suspend fun selectByName(name: String): List<CityData>?
 
-    @Query("SELECT * FROM CityTable WHERE id = :id")
-    suspend fun selectById(id: Long): List<CityData>?
+    @Query("SELECT * FROM CityTable WHERE id = :id LIMIT 1")
+    suspend fun selectById(id: Long): CityData?
 
     @Query("DELETE FROM CityTable")
     suspend fun truncate()

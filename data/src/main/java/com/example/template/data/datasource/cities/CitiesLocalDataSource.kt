@@ -7,4 +7,5 @@ interface CitiesLocalDataSource: BaseDataSource {
     suspend fun setCities(cityEntities: List<CityEntity>)
     suspend fun getCities(): List<CityEntity>
     suspend fun deleteAll()
+    suspend fun getCity(id: Long): CityEntity?
 }

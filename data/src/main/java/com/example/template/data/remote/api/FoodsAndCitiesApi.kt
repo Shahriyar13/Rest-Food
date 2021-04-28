@@ -6,8 +6,8 @@ import retrofit2.http.GET
 
 interface FoodsAndCitiesApi {
 
-    @GET("a2b63ef226c08553b2f9")
-    suspend fun getSamples(
+    @GET("7f18b4d273143f32399b")
+    suspend fun getFullData(
     ): Response<FoodsAndCitiesResDTO>
 
 }

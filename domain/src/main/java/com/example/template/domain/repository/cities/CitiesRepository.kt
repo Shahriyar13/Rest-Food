@@ -5,4 +5,5 @@ import com.example.template.domain.repository.BaseRepository
 
 interface CitiesRepository: BaseRepository {
     suspend fun getCities() : List<CityEntity>
+    suspend fun getCity(id: Long): CityEntity?
 }

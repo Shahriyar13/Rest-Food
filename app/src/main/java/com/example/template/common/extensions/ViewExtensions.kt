@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavArgs
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
 import com.example.template.R
 import com.example.template.common.navigation.NavigationResult
 import com.google.android.material.snackbar.Snackbar
@@ -66,6 +67,14 @@ fun NavController.safeNavigate(direction: NavDirections) {
 //    Log.d("@@@@", context.resources.getResourceName(this.currentDestination!!.id))
     try {
         navigate(direction)
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
+    }
+}
+fun NavController.safeNavigate(direction: NavDirections, extra: FragmentNavigator.Extras) {
+//    Log.d("@@@@", context.resources.getResourceName(this.currentDestination!!.id))
+    try {
+        navigate(direction, extra)
     } catch (e: IllegalArgumentException) {
         e.printStackTrace()
     }

@@ -10,8 +10,8 @@
         android:name="com.example.template.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_fragmentHome_to_fragmentFeatureA"
-            app:destination="@id/fragmentFeatureA">
+            android:id="@+id/action_fragmentHome_to_fragmentCityDetails"
+            app:destination="@id/fragmentCityDetails">
             <argument
                 android:name="id"
                 android:defaultValue="0L"
@@ -20,9 +20,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragmentFeatureA"
-        android:name="com.example.template.ui.city.SampleFragment"
-        tools:layout="@layout/fragment_feature_a">
+        android:id="@+id/fragmentCityDetails"
+        android:name="com.example.template.ui.city.CityDetailsFragment"
+        tools:layout="@layout/fragment_city_details">
 
         <argument
             android:name="id"

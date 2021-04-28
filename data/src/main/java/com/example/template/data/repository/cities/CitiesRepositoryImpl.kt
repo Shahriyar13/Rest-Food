@@ -9,5 +9,6 @@ class CitiesRepositoryImpl(
 ): CitiesRepository {
 
     override suspend fun getCities(): List<CityEntity> = localDataSource.getCities()
+    override suspend fun getCity(id: Long): CityEntity? = localDataSource.getCity(id)
 
 }
